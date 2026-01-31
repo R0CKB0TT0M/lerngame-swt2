@@ -1,0 +1,236 @@
+questions:
+- question: Welcher HTTP-Statuscode sollte verwendet werden, wenn eine Ressource erfolgreich
+    über einen POST-Request neu erstellt wurde?
+  answer: 201 Created
+  wrong_answers:
+  - 200 OK
+  - 202 Accepted
+  - 204 No Content
+  explanation: Der Statuscode 201 zeigt an, dass die Anfrage erfolgreich war und als
+    Ergebnis eine neue Ressource erstellt wurde. Die URI der neuen Ressource wird
+    oft im Location-Header mitgeteilt.
+- question: Ein Client sendet einen DELETE-Aufruf, der erfolgreich verarbeitet wurde.
+    Der Server soll jedoch keine Entität im Antwort-Body zurücksenden. Welcher Code
+    ist am besten geeignet?
+  answer: 204 No Content
+  wrong_answers:
+  - 200 OK
+  - 404 Not Found
+  - 410 Gone
+  explanation: 204 No Content bedeutet, dass die Operation erfolgreich war, der Server
+    aber nur Metadaten und keine Repräsentation im Antwortrumpf liefert. Ideal für
+    DELETE-Operationen.
+- question: Was ist der Hauptunterschied zwischen den Statuscodes 404 und 410?
+  answer: 404 bedeutet, dass die Ressource aktuell nicht gefunden wurde; 410 bedeutet,
+    dass sie dauerhaft entfernt wurde.
+  wrong_answers:
+  - 404 ist für Serverfehler, 410 für Clientfehler.
+  - 410 wird nur bei fehlerhafter Syntax verwendet.
+  - 404 darf nur bei GET-Requests verwendet werden.
+  explanation: Laut Anhang wird 410 Gone verwendet, wenn eine Ressource früher existierte,
+    aber jetzt dauerhaft nicht mehr verfügbar ist (z. B. wegen einer veralteten API-Version).
+    404 Not Found ist allgemeiner und sagt nichts über die Dauerhaftigkeit aus.
+- question: Ein Client sendet Daten in einem Format (z. B. XML), das der Server für
+    diese Operation nicht unterstützt. Welchen Fehlercode sollte der Server zurückgeben?
+  answer: 415 Unsupported Media Type
+  wrong_answers:
+  - 400 Bad Request
+  - 403 Forbidden
+  - 501 Not Implemented
+  explanation: Der Code 415 wird verwendet, wenn der Client ein Format sendet, mit
+    dem der Server oder die spezifische Methode nicht umgehen kann.
+- question: Welcher Statuscode ist angemessen, wenn ein Server eine Anfrage wegen
+    eines Syntaxfehlers (z. B. fehlerhaftes JSON) nicht verarbeiten kann?
+  answer: 400 Bad Request
+  wrong_answers:
+  - 401 Unauthorized
+  - 500 Internal Server Error
+  - 502 Bad Gateway
+  explanation: 400 Bad Request signalisiert einen Client-Fehler aufgrund falscher
+    Syntax. Die Serverantwort sollte idealerweise Details enthalten, was genau am
+    Request falsch war.
+- question: Was signalisiert der Statuscode 202 Accepted dem Client?
+  answer: Die Anfrage wurde akzeptiert, aber die Verarbeitung ist noch nicht abgeschlossen.
+  wrong_answers:
+  - Die Anfrage wurde dauerhaft auf eine neue URI verschoben.
+  - Der Client hat keine Berechtigung für diese Ressource.
+  - Die Ressource wurde erfolgreich gelöscht.
+  explanation: 202 wird für asynchrone Verarbeitungen genutzt. Der Server hat den
+    Auftrag erhalten, das Ergebnis steht aber noch nicht fest.
+- question: Welchen Code gibt ein Gateway-Server zurück, wenn er von einem nachgelagerten
+    (Upstream) Server keine rechtzeitige Antwort erhält?
+  answer: 504 Gateway Timeout
+  wrong_answers:
+  - 500 Internal Server Error
+  - 502 Bad Gateway
+  - 503 Service Unavailable
+  explanation: Während 502 eine ungültige Antwort signalisiert, besagt 504 explizit,
+    dass die Zeitspanne für eine Antwort überschritten wurde (Zeitüberschreitung).
+- question: Ein angemeldeter Benutzer versucht eine Ressource zu löschen, hat aber
+    nicht die notwendigen Rechte für diese spezifische Operation. Welcher Code sollte
+    verwendet werden?
+  answer: 403 Forbidden (oder 550 Permission Denied laut Anhang)
+  wrong_answers:
+  - 401 Unauthorized
+  - 404 Not Found
+  - 405 Method Not Allowed
+  explanation: 401 bedeutet "nicht authentifiziert" (wer bist du?). 403 bedeutet "authentifiziert,
+    aber nicht autorisiert" (du darfst das nicht). Der Anhang nennt zudem den speziellen
+    Code 550 für fehlende Berechtigungen.
+- question: Bei der Erweiterung der API in der Übung soll eine Ressource "availableProducts"
+    als Alias angelegt werden. Was ist der Hauptzweck eines solchen Alias-Pfads?
+  answer: Er bietet einen dedizierten Pfad für eine gefilterte Suche (z. B. nach Status),
+    oft inklusive Sortierung.
+  wrong_answers:
+  - Er dient dazu, die API-Versionierung zu verstecken.
+  - Er ersetzt die Notwendigkeit von HTTP-Methoden.
+  - Er dient ausschließlich dem Löschen von abgelaufenen Produkten.
+  explanation: Laut Aufgabenstellung dient der Alias "availableProducts" dazu, alle
+    verfügbaren Produkte mit spezifischen Filtern, Sortierungen und Limitierungen
+    unter einem klaren Pfad auffindbar zu machen.
+- question: Welcher Statuscode wird bei einem bedingten GET verwendet, wenn sich die
+    Ressource seit dem im Header angegebenen Zeitpunkt nicht verändert hat?
+  answer: 304 Not Modified
+  wrong_answers:
+  - 200 OK
+  - 204 No Content
+  - 301 Moved Permanently
+  explanation: 304 informiert den Client, dass er seine gecachte Version der Ressource
+    weiterverwenden kann, da auf dem Server keine Änderung vorliegt. Das spart Bandbreite.
+- question: Was beschreibt eine API korrekt?
+  answer: Sie definiert Operationen sowie Ein- und Ausgaben unabhängig von der Implementierung.
+  wrong_answers:
+  - Sie beschreibt ausschließlich die interne Implementierung.
+  - Sie legt die Hardwareplattform fest.
+  - Sie ist identisch mit dem Quellcode.
+  explanation: Eine API abstrahiert die Nutzung einer Softwarekomponente. Sie legt
+    fest, wie andere Systeme oder Komponenten mit ihr interagieren können, ohne Details
+    der internen Implementierung preiszugeben.
+- question: Welches Prinzip ist KEIN Qualitätsmerkmal einer guten API?
+  answer: Möglichst große API-Oberfläche
+  wrong_answers:
+  - Konsistenz
+  - Intuitivität
+  - Gute Dokumentation
+  explanation: Eine gute API sollte möglichst klein, aber ausreichend mächtig sein.
+    Große APIs erhöhen Komplexität und Wartungsaufwand und können nicht ohne Weiteres
+    wieder reduziert werden.
+- question: Was ist ein Nachteil von SOAP laut Vorlesung?
+  answer: Hoher Overhead und ausschließliche Nutzung von XML.
+  wrong_answers:
+  - Fehlende Standardisierung.
+  - Keine Unterstützung für HTTP.
+  - Keine Möglichkeit für Remote Calls.
+  explanation: SOAP erzeugt durch XML, zusätzliche Protokollschichten und eigene Standards
+    wie WSDL einen hohen Overhead und nutzt die Möglichkeiten von HTTP, wie Caching
+    oder unterschiedliche HTTP-Methoden, nur eingeschränkt.
+- question: Was ist ein zentrales Merkmal von REST?
+  answer: Ressourcen sind eindeutig adressierbar und über HTTP-Methoden manipulierbar.
+  wrong_answers:
+  - Fokus auf Methoden statt Daten.
+  - Ausschließliche Nutzung von POST.
+  - Zustandsbehaftete Kommunikation.
+  explanation: REST ist ressourcenorientiert. Jede Ressource besitzt eine eindeutige
+    URI und wird mithilfe standardisierter HTTP-Methoden wie GET, POST, PUT oder DELETE
+    bearbeitet.
+- question: Welche Aussage zu REST ist korrekt?
+  answer: REST-Nachrichten sind zustandslos und enthalten alle notwendigen Informationen.
+  wrong_answers:
+  - Der Server speichert den Client-Zustand zwischen Requests.
+  - REST erlaubt nur JSON als Datenformat.
+  - REST ist ein Netzwerkprotokoll.
+  explanation: REST ist ein Architekturstil, kein Protokoll. Zustandslosigkeit bedeutet,
+    dass jeder Request alle Informationen enthält, die der Server benötigt, um ihn
+    zu verarbeiten.
+- question: Welche Aussage beschreibt HATEOAS korrekt?
+  answer: Der Client navigiert ausschließlich über vom Server bereitgestellte Links
+    durch die Anwendung.
+  wrong_answers:
+  - Der Client kennt alle möglichen Endpunkte zur Designzeit.
+  - HATEOAS ersetzt HTTP-Methoden vollständig.
+  - HATEOAS ist ein alternatives Datenformat zu JSON.
+  explanation: HATEOAS entkoppelt Client und Server, indem der Server zur Laufzeit
+    gültige Übergänge (Links) bereitstellt und so den Workflow steuert.
+- question: Warum gilt REST als lose gekoppelte Architektur?
+  answer: Weil Clients nur Ressourcen und Hypermedia-Links kennen, nicht interne Serverlogik.
+  wrong_answers:
+  - Weil REST keine Schnittstellen definiert.
+  - Weil REST zustandsbehaftete Kommunikation verwendet.
+  - Weil Clients direkt auf die Datenbank zugreifen.
+  explanation: Lose Kopplung entsteht durch klare Ressourcenschnittstellen, standardisierte
+    HTTP-Methoden und optionale HATEOAS-Navigation.
+- question: Warum wird Versionierung über die URI in der Praxis häufig bevorzugt?
+  answer: Weil sie einfach sichtbar, leicht testbar und gut verständlich für Clients
+    ist.
+  wrong_answers:
+  - Weil HTTP keine Header unterstützt.
+  - Weil Query-Parameter technisch nicht möglich sind.
+  - Weil Versionierung laut REST zwingend vorgeschrieben ist.
+  explanation: URI-Versionierung ist zwar nicht ideal aus rein REST-theoretischer
+    Sicht, hat sich aber aufgrund ihrer Einfachheit und Klarheit in der Praxis durchgesetzt.
+- question: Welche Eigenschaft von HTTP-Methoden ist besonders relevant für Caching?
+  answer: Sicherheit und Idempotenz.
+  wrong_answers:
+  - Die Größe der übertragenen Daten.
+  - Die verwendete Programmiersprache.
+  - Die URI-Länge.
+  explanation: Sichere und idempotente Methoden wie GET können problemlos gecacht
+    werden, da sie keine Zustandsänderungen verursachen.
+- question: Warum gilt PUT als idempotent, POST jedoch nicht?
+  answer: Mehrfache identische PUT-Requests führen zum gleichen Zustand, POST erzeugt
+    jedoch mehrfach neue Ressourcen.
+  wrong_answers:
+  - PUT ist schneller als POST.
+  - POST darf keine Daten übertragen.
+  - PUT ist nur für JSON erlaubt.
+  explanation: Idempotenz bedeutet, dass wiederholte Ausführung denselben Effekt hat.
+    PUT ersetzt eine Ress
+- question: Was ist der Hauptvorteil der Verwendung von "URIs" (Uniform Resource Identifiers) im REST-Design, wie in der Petstore-Analyse gefragt?
+  answer: Sie dienen als eindeutige Identifikatoren für Ressourcen und sollten intuitiv und hierarchisch aufgebaut sein.
+  wrong_answers:
+  - Sie ermöglichen die Verschlüsselung der Datenübertragung.
+  - Sie ersetzen die Notwendigkeit von HTTP-Statuscodes.
+  - Sie dienen ausschließlich dazu, die IP-Adresse des Servers zu verbergen.
+  explanation: In REST werden URIs genutzt, um Ressourcen (z. B. /pet/123) eindeutig zu adressieren. Ein gutes Design nutzt Substantive statt Verben und bildet Hierarchien ab.
+- question: Wenn du in der Übung ein Tier mit "Try it out" erstellst und die Daten im "Body" sendest, welchen Content-Type nutzt du in der Regel für REST-APIs?
+  answer: application/json
+  wrong_answers:
+  - text/plain
+  - application/octet-stream
+  - image/svg+xml
+  explanation: JSON ist das Standardformat für den Datenaustausch in modernen REST-APIs. Die Übung im Swagger Editor zeigt dies durch die Beispiel-Struktur im Request-Body.
+- question: Welcher Statuscode ist laut Dokumentation für eine Anfrage geeignet, die formal korrekt ist, aber inhaltlich nicht verarbeitet werden kann (z.B. Logikfehler)?
+  answer: 422 Unprocessable Entity
+  wrong_answers:
+  - 400 Bad Request
+  - 404 Not Found
+  - 500 Internal Server Error
+  explanation: Während 400 oft für Syntaxfehler (falsches JSON) steht, wird 422 (im Anhang unter 400 erwähnt) empfohlen, wenn die Syntax korrekt ist, aber die enthaltenen Anweisungen semantisch fehlerhaft sind.
+- question: In der "Product API" Übung soll ein "Alias" für verfügbare Produkte angelegt werden. Welche Parameter werden hier oft verwendet, um die Antwortmenge zu steuern?
+  answer: Sortierung (sort) und Limitierung (limit)
+  wrong_answers:
+  - Verschlüsselungstyp und Kompressionsrate
+  - MAC-Adresse und Hardware-ID
+  - Datenbankname und Tabellenindex
+  explanation: Um große Datenmengen handhabbar zu machen (Pagination), nutzt man Parameter zur Sortierung und Begrenzung der Ausgabe (z.B. ?limit=10).
+- question: Was bedeutet "Idempotenz" bei HTTP-Methoden (wichtig für die CRUD-Analyse)?
+  answer: Dass mehrfache identische Aufrufe der Methode den gleichen Effekt auf den Serverzustand haben wie ein einzelner Aufruf.
+  wrong_answers:
+  - Dass die Methode nur von einem einzigen Benutzer gleichzeitig aufgerufen werden kann.
+  - Dass die Methode niemals eine Fehlermeldung zurückgibt.
+  - Dass die Methode die Daten automatisch verschlüsselt.
+  explanation: GET, PUT und DELETE sind idempotent. POST ist es nicht, da mehrfache POST-Requests mehrere Ressourcen (z. B. zwei Haustiere) anlegen würden.
+- question: Ein Server ist wegen Wartungsarbeiten oder Überlastung temporär nicht verfügbar. Welchen Statuscode gibt er laut Anhang zurück?
+  answer: 503 Service Unavailable
+  wrong_answers:
+    - 500 Internal Server Error
+    - 404 Not Found
+    - 403 Forbidden
+  explanation: 503 signalisiert eine temporäre Nichtverfügbarkeit. Oft wird ein "Retry-After"-Header mitgesendet, um dem Client zu sagen, wann er es wieder versuchen kann.
+- question: Welcher Code wird verwendet, wenn eine angeforderte Ressource dauerhaft auf eine neue URI umgezogen ist (wichtig für API-Versioning)?
+  answer: 301 Moved Permanently
+  wrong_answers:
+    - 201 Created
+    - 304 Not Modified
+    - 410 Gone
+  explanation: 301 weist den Client an, künftig die neue URI zu verwenden, die im Location-Header der Antwort angegeben wird.

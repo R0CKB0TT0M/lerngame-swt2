@@ -1,0 +1,143 @@
+questions:
+  - question: Was versteht man unter dem Begriff "Kohäsion" im Kontext von Entwurfsprinzipien?
+    answer: Der innere Zusammenhalt von Elementen innerhalb einer Systemkomponente.
+    wrong_answers:
+      - Die Stärke der Abhängigkeiten zwischen verschiedenen Modulen.
+      - Die Anzahl der Schnittstellen, die eine Klasse nach außen bereitstellt.
+      - Die Fähigkeit einer Klasse, von anderen Klassen zu erben.
+    explanation: Hohe Kohäsion bedeutet, dass die Verantwortlichkeiten eines Bausteins inhaltlich eng zusammengehören (Seite 14). Ein Ziel des Entwurfs ist "Starke Bindung/Hohe Kohäsion".
+
+  - question: Welches SOLID-Prinzip besagt, dass eine Klasse nur einen einzigen Grund für eine Änderung haben sollte?
+    answer: Single-Responsibility-Prinzip
+    wrong_answers:
+      - Open-Closed-Prinzip
+      - Liskovsches Substitutionsprinzip
+      - Dependency-Inversion-Prinzip
+    explanation: Das Single-Responsibility-Prinzip (SRP) fordert, dass eine Klasse nur eine Verantwortlichkeit hat, um die Wartbarkeit zu erhöhen und Seiteneffekte zu minimieren (Seite 18).
+
+  - question: Welches Entwurfsmuster ist am besten geeignet, um einen Algorithmus innerhalb einer Klasse zur Laufzeit austauschbar zu machen?
+    answer: Strategiemuster (Strategy Pattern)
+    wrong_answers:
+      - Singletonmuster
+      - Adaptermuster
+      - Beobachtermuster
+    explanation: Das Strategiemuster kapselt eine Familie von Algorithmen und macht sie austauschbar, sodass der Algorithmus unabhängig von den Clients variieren kann (Seite 45).
+
+  - question: Was ist das Hauptproblem beim "Alien Simulator - Version 2", bei dem die Methode erdeBesuchen() einfach in der Oberklasse definiert und bei Bedarf überschrieben wird?
+    answer: Code-Duplizierung und hoher Wartungsaufwand bei vielen Alientypen.
+    wrong_answers:
+      - Die Performance des Systems wird durch Polymorphismus zu stark beeinträchtigt.
+      - In Java können Methoden einer abstrakten Klasse nicht überschrieben werden.
+      - Das Singleton-Prinzip wird durch die Vererbung verletzt.
+    explanation: Wenn viele Alientypen das gleiche Verhalten teilen, müsste der Code bei Änderungen an vielen Stellen gleichzeitig angepasst werden (Seite 40).
+
+  - question: Welches Muster löst das Problem inkompatibler Schnittstellen zwischen einer bestehenden Klasse und einem Client?
+    answer: Adaptermuster
+    wrong_answers:
+      - Beobachtermuster
+      - Strategiemuster
+      - Fassadenmuster
+    explanation: Das Adaptermuster konvertiert die Schnittstelle einer Klasse in eine andere, die der Client erwartet (Seite 54).
+
+  - question: Wie definiert das "Gesetz von Demeter" die Kommunikation zwischen Objekten?
+    answer: Ein Objekt sollte nur mit Objekten in seiner unmittelbaren Nachbarschaft kommunizieren ("Reden Sie nicht mit Fremden").
+    wrong_answers:
+      - Jedes Objekt muss über eine zentrale Registry registriert sein.
+      - Unterklassen müssen jederzeit ihre Basisklassen ersetzen können.
+      - Datenstrukturen sollten immer öffentlich zugänglich sein (Public Fields).
+    explanation: "Das Ziel ist die Reduktion von Abhängigkeiten. In Programmiersprachen bedeutet dies oft: Nur ein Punkt/Pfeil pro Anweisung (Seite 16)."
+
+  - question: In welche drei Kategorien werden Entwurfsmuster der "Gang of Four" (GoF) unterteilt?
+    answer: Erzeugungsmuster, Strukturmuster und Verhaltensmuster.
+    wrong_answers:
+      - Analyse-Muster, Design-Muster und Architektur-Muster.
+      - Klassen-Muster, Interface-Muster und Objekt-Muster.
+      - Statische Muster, Dynamische Muster und Funktionale Muster.
+    explanation: Die GoF klassifiziert Muster nach ihrem Zweck in Erzeugung (Creation), Struktur (Structure) und Verhalten (Behavior) (Seite 29).
+
+  - question: Welcher Nachteil ergibt sich laut Folien häufig durch die Anwendung von Entwurfsmustern?
+    answer: Das System kann durch zusätzliche Klassen und Interfaces "aufgebläht" werden.
+    wrong_answers:
+      - Die Wiederverwendbarkeit von Code sinkt drastisch.
+      - Entwurfsmuster verhindern den Einsatz von Polymorphismus.
+      - Die Kopplung zwischen Komponenten wird zwingend erhöht.
+    explanation: Patterns können helfen, Entwürfe flexibler zu machen, führen aber oft zu einer höheren Anzahl an Abstraktionen, was das System komplexer machen kann (Seite 27).
+  - question: Was ist das Hauptmerkmal des Singletonmusters?
+    answer: Es stellt sicher, dass von einer Klasse genau ein Exemplar existiert.
+    wrong_answers:
+      - Es sorgt dafür, dass alle Methoden einer Klasse statisch sind.
+      - Es verhindert, dass eine Klasse von anderen Klassen erben kann.
+      - Es dient dazu, globale Variablen durch lokale Instanzen zu ersetzen.
+    explanation: Das Singleton stellt sicher, dass eine Klasse nur ein Exemplar besitzt und bietet einen globalen Zugriffspunkt darauf (Seite 34).
+
+  - question: Welches Problem adressiert das "Liskovsche Substitutionsprinzip" (LSP)?
+    answer: Abgeleitete Klassen müssen immer als Ersatz für ihre Basisklasse fungieren können.
+    wrong_answers:
+      - Klassen sollten offen für Erweiterungen, aber geschlossen für Änderungen sein.
+      - Schnittstellen müssen so klein wie möglich gehalten werden.
+      - Abhängigkeiten sollten nur von Abstraktionen, nicht von Konkretem abhängen.
+    explanation: LSP besagt, dass eine Methode, die eine Basisklasse erwartet, auch mit jeder Unterklasse korrekt funktionieren muss, ohne das Programmverhalten zu korrumpieren (Seite 20).
+
+  - question: Was unterscheidet "lose Kopplung" von "starker Kopplung"?
+    answer: Bei loser Kopplung haben Änderungen in einer Klasse im Idealfall keine Auswirkungen auf andere Klassen.
+    wrong_answers:
+      - Lose Kopplung bedeutet, dass alle Klassen in einem einzigen Paket liegen.
+      - Starke Kopplung bedeutet, dass eine Klasse viele private Methoden hat.
+      - Lose Kopplung wird nur durch die Verwendung von statischen Variablen erreicht.
+    explanation: Lose Kopplung erhöht die Flexibilität und Wartbarkeit, da Komponenten weitgehend unabhängig voneinander fungieren (Seite 7).
+
+  - question: Welches Entwurfsprinzip wird durch "Information Hiding" (Geheimnisprinzip) unterstützt?
+    answer: Kapselung
+    wrong_answers:
+      - Vererbung
+      - Polymorphismus
+      - Mehrfachvererbung
+    explanation: Das Geheimnisprinzip verbirgt die Interna einer Komponente vor dem Anwender, was die Datenkonsistenz verbessert und die Komplexität reduziert (Seite 10).
+
+  - question: Beim Beobachtermuster gibt es "Push" und "Pull" Benachrichtigungen. Was charakterisiert den "Pull"-Ansatz?
+    answer: Der Beobachter erhält nur eine Benachrichtigung und muss sich die Daten selbst vom Subjekt holen.
+    wrong_answers:
+      - Das Subjekt sendet alle geänderten Daten direkt im Benachrichtigungsaufruf mit.
+      - Der Beobachter löscht sich automatisch nach der ersten Nachricht aus der Liste.
+      - Das Subjekt fragt den Beobachter, ob dieser neue Daten erhalten möchte.
+    explanation: Beim Pull-Verfahren holt sich der Beobachter die Daten über eine Referenz auf das beobachtete Objekt selbst (Seite 67).
+
+  - question: Was besagt das "Interface-Segregation-Prinzip"?
+    answer: Clients sollten nicht von Schnittstellen abhängen müssen, die sie nicht verwenden.
+    wrong_answers:
+      - Alle Methoden einer Klasse müssen in einem einzigen großen Interface definiert sein.
+      - Interfaces dürfen keine Methoden enthalten, nur Konstanten.
+      - Jede Klasse darf nur genau ein Interface implementieren.
+    explanation: Es ist besser, mehrere spezifische Schnittstellen zu haben als eine große "Universalschnittstelle" (Seite 21).
+
+  - question: Welches Muster wird verwendet, um eine 1:n-Abhängigkeit zwischen Objekten zu definieren, damit Zustandsänderungen automatisch weitergegeben werden?
+    answer: Beobachtermuster (Observer Pattern)
+    wrong_answers:
+      - Strategiemuster
+      - Adaptermuster
+      - Fabrikmuster
+    explanation: Das Observer Pattern benachrichtigt automatisch alle Abhängigen (Beobachter), wenn sich der Zustand des Subjekts ändert (Seite 68).
+
+  - question: Was ist ein "Idiom" im Kontext von Software-Mustern?
+    answer: Ein Muster, das spezifisch für eine bestimmte Programmiersprache ist.
+    wrong_answers:
+      - Ein Muster, das die gesamte Systemarchitektur beschreibt.
+      - Ein fehlerhaftes Entwurfsmuster (Anti-Pattern).
+      - Eine grafische Notation zur Darstellung von Klassendiagrammen.
+    explanation: Idiome sind sprachspezifische Lösungen für häufig auftretende Probleme (Seite 24).
+
+  - question: Warum ist das Singletonmuster oft umstritten (im Kontext der Folien)?
+    answer: Weil es im Grunde wie eine globale Variable wirkt, aber dennoch die Erzeugung kontrolliert.
+    wrong_answers:
+      - Weil es die Ausführungsgeschwindigkeit des Programms halbiert.
+      - Weil es in Java nur maximal 10 Mal pro Projekt verwendet werden darf.
+      - Weil es die Verwendung von privaten Konstruktoren verbietet.
+    explanation: Die Folien weisen darauf hin, dass globale Variablen zwar Zugriff ermöglichen, aber problematisch sind, weshalb das Singleton die Verwaltung selbst übernimmt (Seite 34).
+
+  - question: Was beschreibt das Prinzip "Dependency Inversion"?
+    answer: Abhängigkeiten sollten von Abstraktionen abhängen, nicht von konkreten Implementierungen.
+    wrong_answers:
+      - Oberklassen sollten von ihren Unterklassen abhängen.
+      - Datenbanken sollten den Programmcode steuern.
+      - Alle Klassen sollten ihre Abhängigkeiten zur Laufzeit selbst instanziieren.
+    explanation: Das Prinzip fördert die Flexibilität, indem zentrale Geschäftsprozesse von abstrakten Schnittstellen statt von konkreten Klassen abhängen (Seite 22).

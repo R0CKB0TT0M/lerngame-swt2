@@ -4,10 +4,9 @@ from pathlib import Path
 import yaml
 
 
-def load_questions():
-    questions_path = Path(__file__).resolve().parent / "questions.yaml"
+def load_questions(questions_path):
     if not questions_path.exists():
-        print("Unable to find questions.yaml.")
+        print(f"Unable to find {questions_path.name}.")
         return []
 
     with questions_path.open("r", encoding="utf-8") as file:
@@ -19,6 +18,30 @@ def load_questions():
         for question in questions
         if question.get("question") and question.get("answer")
     ]
+
+
+def discover_topics():
+    base_path = Path(__file__).resolve().parent
+    return {path.stem: path for path in base_path.glob("*.yaml") if path.is_file()}
+
+
+def ask_topic_selection(topic_counts):
+    topic_names = sorted(topic_counts.keys())
+    if "All" in topic_names:
+        topic_names.remove("All")
+        topic_names.insert(0, "All")
+    while True:
+        print("Available topics:")
+        for idx, name in enumerate(topic_names, start=1):
+            count = topic_counts[name]
+            label = "question" if count == 1 else "questions"
+            print(f"  {idx}. {name} ({count} {label})")
+        choice = input("Select a topic by number: ").strip()
+        if choice.isdigit():
+            selected = int(choice)
+            if 1 <= selected <= len(topic_names):
+                return topic_names[selected - 1]
+        print("Please select a valid topic number.\n")
 
 
 def get_user_choice(option_count):
@@ -68,9 +91,38 @@ def ask_question_count(max_questions):
 
 
 def run_quiz():
-    questions = load_questions()
+    topics = discover_topics()
+    if not topics:
+        print("No YAML topic files found in the current directory.")
+        return
+
+    topic_question_bank = {name: load_questions(path) for name, path in topics.items()}
+    topic_counts = {
+        name: len(questions) for name, questions in topic_question_bank.items()
+    }
+    total_questions_available = sum(topic_counts.values())
+    if total_questions_available == 0:
+        print("No questions available across the discovered topics.")
+        return
+
+    topic_counts_with_all = dict(topic_counts)
+    topic_counts_with_all["All"] = total_questions_available
+
+    topic_name = ask_topic_selection(topic_counts_with_all)
+    if topic_name == "All":
+        questions = [
+            question
+            for questions_list in topic_question_bank.values()
+            for question in questions_list
+        ]
+    else:
+        questions = topic_question_bank.get(topic_name, [])
+
     if not questions:
-        print("No questions available to run the quiz.")
+        if topic_name == "All":
+            print("No questions available across the selected topics.")
+        else:
+            print(f"No questions available for the '{topic_name}' topic.")
         return
 
     random.shuffle(questions)

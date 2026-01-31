@@ -1,0 +1,144 @@
+questions:
+  - question: Welches grundlegende Problem von REST soll GraphQL primär lösen?
+    answer: Der Client soll selbst bestimmen können, welche Daten er benötigt.
+    wrong_answers:
+      - REST unterstützt keine verteilten Systeme.
+      - REST kann keine HTTP-Methoden verwenden.
+      - REST ist ausschließlich zustandsbehaftet.
+    explanation: Bei REST bestimmt der Server die Struktur der Antwort, was häufig zu Overfetching oder Underfetching führt. GraphQL verlagert diese Kontrolle auf den Client, der exakt festlegt, welche Daten er benötigt, ohne dass der Server angepasst werden muss.
+
+  - question: Warum ist die Weiterentwicklung von REST-APIs problematisch?
+    answer: Änderungen an der API können bestehende Clients inkompatibel machen.
+    wrong_answers:
+      - REST erlaubt keine neuen Endpunkte.
+      - REST unterstützt keine Versionierung.
+      - REST ist nicht dokumentierbar.
+    explanation: REST-APIs sind stark versionsabhängig. Änderungen an Ressourcen oder Antwortstrukturen erfordern häufig neue API-Versionen, da bestehende Clients sonst nicht mehr funktionieren.
+
+  - question: Welche Eigenschaft unterscheidet GraphQL grundlegend von REST hinsichtlich Endpunkten?
+    answer: GraphQL verwendet typischerweise nur einen einzigen Endpunkt.
+    wrong_answers:
+      - GraphQL verwendet ausschließlich POST-Requests.
+      - GraphQL benötigt keine HTTP-Verbindung.
+      - GraphQL verzichtet vollständig auf Endpunkte.
+    explanation: Während REST viele ressourcenspezifische Endpunkte nutzt, bündelt GraphQL sämtliche Anfragen über einen einzigen Endpunkt und unterscheidet Operationen über das Schema und die Abfrage.
+
+  - question: Was beschreibt ein GraphQL-Schema?
+    answer: Die verfügbaren Datentypen, Beziehungen und Operationen der API.
+    wrong_answers:
+      - Die konkrete Datenbankstruktur.
+      - Die interne Serverimplementierung.
+      - Die UI-Struktur des Clients.
+    explanation: Das GraphQL-Schema ist der zentrale Vertrag zwischen Client und Server. Es definiert Typen, deren Felder, Beziehungen sowie erlaubte Queries, Mutations und Subscriptions.
+
+  - question: Welche Operation dient in GraphQL dem reinen Datenabruf?
+    answer: Query
+    wrong_answers:
+      - Mutation
+      - Subscription
+      - Resolver
+    explanation: Queries werden verwendet, um Daten abzufragen, ohne sie zu verändern. Mutations ändern Daten, Subscriptions ermöglichen ereignisbasierte Updates.
+
+  - question: Warum wird GraphQL als stark typisiert bezeichnet?
+    answer: Weil alle Felder und Rückgabewerte explizit im Schema definiert sind.
+    wrong_answers:
+      - Weil nur primitive Datentypen erlaubt sind.
+      - Weil Typen automatisch aus der Datenbank erzeugt werden.
+      - Weil keine optionalen Felder existieren.
+    explanation: GraphQL erzwingt eine explizite Typdefinition im Schema. Dadurch wissen Client und Server exakt, welche Daten existieren, was die Fehlersicherheit und Tool-Unterstützung verbessert.
+
+  - question: Was bedeutet das Ausrufezeichen (!) in einem GraphQL-Typ?
+    answer: Das Feld oder Element darf nicht null sein.
+    wrong_answers:
+      - Das Feld ist optional.
+      - Das Feld ist veraltet.
+      - Das Feld ist nur lesbar.
+    explanation: Das ! kennzeichnet Non-Null-Typen. Es garantiert, dass ein Wert vorhanden ist, was für Client-Validierung und Vertragssicherheit wichtig ist.
+
+  - question: Welche Funktion erfüllen Resolver in GraphQL?
+    answer: Sie liefern die konkreten Daten für Felder eines Schemas.
+    wrong_answers:
+      - Sie definieren das Schema.
+      - Sie validieren Client-Anfragen syntaktisch.
+      - Sie ersetzen die Datenbank.
+    explanation: Resolver sind Implementierungsfunktionen, die festlegen, wie ein Feld mit realen Daten gefüllt wird. Sie verbinden Schema und Backend-Logik.
+
+  - question: Warum können GraphQL-Abfragen verschachtelt sein?
+    answer: Weil Beziehungen zwischen Typen direkt im Schema modelliert sind.
+    wrong_answers:
+      - Weil GraphQL keine flachen Datenstrukturen erlaubt.
+      - Weil REST-Verschachtelung erzwingt.
+      - Weil nur ein Endpunkt existiert.
+    explanation: GraphQL erlaubt verschachtelte Abfragen, um zusammenhängende Daten in einer Anfrage abzurufen. Das reduziert Roundtrips und ermöglicht komplexe Datenstrukturen.
+
+  - question: Welche Rolle spielen Argumente in GraphQL?
+    answer: Sie erlauben parametrisierte und flexible Abfragen.
+    wrong_answers:
+      - Sie ersetzen Resolver.
+      - Sie definieren neue Typen.
+      - Sie sind nur für Mutations erlaubt.
+    explanation: Argumente funktionieren ähnlich wie Methodenparameter und ermöglichen Filterung, Selektion oder Kontextsteuerung einzelner Felder.
+
+  - question: Wozu dienen Aliase in GraphQL?
+    answer: Um Felder im Ergebnis umzubenennen oder mehrfach abzufragen.
+    wrong_answers:
+      - Um Felder zu löschen.
+      - Um Datentypen zu ersetzen.
+      - Um Resolver zu überschreiben.
+    explanation: Aliase sind besonders nützlich, wenn dasselbe Feld mit unterschiedlichen Argumenten mehrfach abgefragt werden soll, ohne Namenskonflikte im Ergebnis zu erzeugen.
+
+  - question: Warum gelten Fragments als wichtiges Mittel zur Wartbarkeit?
+    answer: Weil sie wiederverwendbare Feldmengen definieren.
+    wrong_answers:
+      - Weil sie Servercode ersetzen.
+      - Weil sie Daten zwischenspeichern.
+      - Weil sie Queries automatisch versionieren.
+    explanation: Fragments reduzieren Redundanz, verbessern Lesbarkeit und erleichtern Änderungen, da Felddefinitionen zentral angepasst werden können.
+
+  - question: Warum ist Fehlerbehandlung in GraphQL schwieriger als in REST?
+    answer: Weil GraphQL in der Regel immer HTTP 200 zurückgibt.
+    wrong_answers:
+      - Weil GraphQL keine Fehler unterstützt.
+      - Weil HTTP-Statuscodes verboten sind.
+      - Weil Resolver keine Fehler werfen dürfen.
+    explanation: GraphQL transportiert Fehler im Antwortkörper statt über HTTP-Statuscodes, was Monitoring, Debugging und Standard-HTTP-Mechanismen erschwert.
+
+  - question: Warum ist Caching mit GraphQL schwieriger als mit REST?
+    answer: Weil die Antwortstruktur vom Client bestimmt wird.
+    wrong_answers:
+      - Weil GraphQL kein HTTP verwendet.
+      - Weil GraphQL immer POST nutzt.
+      - Weil GraphQL keine IDs kennt.
+    explanation: Klassisches HTTP-Caching basiert auf stabilen URIs. Da GraphQL-Abfragen sehr individuell sind, lassen sich Antworten schwer standardisiert cachen.
+
+  - question: Welche Versionierungsstrategie verfolgt GraphQL typischerweise?
+    answer: Felder werden als deprecated markiert statt neue API-Versionen einzuführen.
+    wrong_answers:
+      - Versionierung über URIs.
+      - Versionierung über HTTP-Header.
+      - Keine Versionierung möglich.
+    explanation: GraphQL setzt auf evolutionäre Erweiterung des Schemas. Alte Felder bleiben erhalten, werden aber als veraltet markiert, was jedoch problematisch ist, wenn Clients diese weiter nutzen.
+
+  - question: In welchem Szenario ist GraphQL besonders vorteilhaft?
+    answer: Wenn viele unterschiedliche Clients unterschiedliche Daten benötigen.
+    wrong_answers:
+      - Bei sehr einfachen CRUD-APIs.
+      - Wenn striktes HTTP-Caching entscheidend ist.
+      - Bei stark regulierten Legacy-Systemen.
+    explanation: GraphQL spielt seine Stärken bei heterogenen Clients (Web, Mobile, IoT) aus, da jeder Client genau die Daten anfordern kann, die er benötigt.
+
+  - question: Warum wird GraphQL oft als näher an SOAP als an REST beschrieben?
+    answer: Wegen des vertraglichen Schemas und des einzelnen Endpunkts.
+    wrong_answers:
+      - Wegen XML als Datenformat.
+      - Wegen synchroner Kommunikation.
+      - Wegen zustandsbehafteter Sessions.
+    explanation: Wie SOAP besitzt GraphQL einen starken Vertrag (Schema) und einen zentralen Endpunkt, kombiniert dies jedoch mit der Leichtgewichtigkeit moderner Web-APIs.
+
+  - question: Welche Aussage zu REST vs. GraphQL ist kritisch korrekt?
+    answer: REST ist oft besser cachebar und performanter bei einfachen Zugriffen.
+    wrong_answers:
+      - GraphQL skaliert grundsätzlich besser als REST.
+      - REST kann keine komplexen Daten liefern.
+      - GraphQL ersetzt REST vollständig.
+    explanation: REST nutzt HTTP-Mechanismen optimal aus und ist für viele einfache, hochperformante Anwendungsfälle weiterhin sehr gut geeignet. GraphQL ist kein Ersatz, sondern eine Ergänzung.

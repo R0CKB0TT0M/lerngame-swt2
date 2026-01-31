@@ -1,0 +1,313 @@
+questions:
+- question: Welche drei Prinzipien guter Architektur wurden ursprünglich von Vitruv
+    definiert?
+  answer: Nützlichkeit, Festigkeit, Schönheit
+  wrong_answers:
+  - Skalierbarkeit, Wartbarkeit, Sicherheit
+  - Modularität, Agilität, Geschwindigkeit
+  - Effizienz, Korrektheit, Portabilität
+  explanation: Vitruv definierte die Prinzipien Utilitas (Nützlichkeit), Firmitas
+    (Festigkeit) und Venustas (Schönheit).
+- question: Was ist ein Hauptunterschied zwischen Softwarearchitektur und Softwareentwurf
+    laut den Vorlesungsfolien?
+  answer: Architektur leitet sich vor allem aus nicht-funktionalen Anforderungen ab,
+    während der Entwurf der Fachlichkeit folgt.
+  wrong_answers:
+  - Architektur betrachtet jede einzelne Komponente, Entwurf nur das Gesamtsystem.
+  - Der Entwurf legt die Programmiersprache fest, die Architektur nur die Algorithmen.
+  - Es gibt keinen Unterschied; beide Begriffe beschreiben den gleichen Prozess.
+  explanation: Während Architektur die Qualität (nicht-funktionale Anforderungen)
+    priorisiert, fokussiert sich der Entwurf auf die Umsetzung der fachlichen/funktionalen
+    Anforderungen.
+- question: Welcher IEEE-Standard (zitiert nach Starke) definiert Softwarearchitektur
+    als die grundsätzliche Organisation eines Systems?
+  answer: IEEE-Standard 1417
+  wrong_answers:
+  - IEEE-Standard 802.11
+  - IEEE-Standard 754
+  - IEEE-Standard 1012
+  explanation: Die Folien beziehen sich auf den Standard 1417 (aus Starke, 2018) für
+    die Definition der Systemorganisation.
+- question: Was ist das Kernelement des "+1" im 4+1-Sichtenmodell von Philippe Kruchten?
+  answer: Scenarios (Szenarien/Use Cases)
+  wrong_answers:
+  - Physical View
+  - Logical View
+  - Deployment View
+  explanation: Das Modell besteht aus vier Sichten (Logical, Process, Development,
+    Physical), die durch Szenarien (Scenarios) verknüpft und validiert werden.
+- question: Welches Architekturmuster gehört laut den Folien zum Architekturstil der
+    "Datenzentrischen Systeme"?
+  answer: Blackboard
+  wrong_answers:
+  - Pipes und Filter
+  - Client-Server
+  - Model-View-Controller
+  explanation: Blackboard und Repository sind typische Muster für datenzentrische
+    Architekturstile.
+- question: Was besagt "Conways Law" im Kontext der Softwareentwicklung?
+  answer: Organisationen entwerfen Systeme, die ihre eigenen Kommunikationsstrukturen
+    abbilden.
+  wrong_answers:
+  - Die Geschwindigkeit der Hardware verdoppelt sich alle 18 Monate.
+  - Ein System ist nur so stark wie sein schwächstes Modul.
+  - Software wird mit der Zeit immer komplexer, bis sie unwartbar wird.
+  explanation: Edward Conway formulierte 1968, dass die Struktur eines Systems die
+    Kommunikationswege der erstellenden Organisation widerspiegelt.
+- question: Welches Objekt dient in einer Schichtenarchitektur (Backend) primär dem
+    Datenaustausch zwischen den Schichten?
+  answer: DTO (Data Transfer Object)
+  wrong_answers:
+  - MVC (Model View Controller)
+  - API (Application Programming Interface)
+  - SQL (Structured Query Language)
+  explanation: Data Transfer Objects (DTOs) werden explizit für den Austausch von
+    Daten zwischen den Schichten (z. B. Frontend und Backend) genutzt.
+- question: Was ist eine zentrale Herausforderung bei der Nutzung von Microservices?
+  answer: Service Discovery (Dienste finden)
+  wrong_answers:
+  - Zu starke Kapselung der Daten
+  - Fehlende Skalierbarkeit
+  - Die Notwendigkeit eines einzigen, großen Datenbank-Servers
+  explanation: Da Microservices verteilt sind, müssen Mechanismen wie Service Discovery
+    implementiert werden, damit Consumer die Instanzen der Dienste finden können.
+- question: Was ist das Ziel der "Kontextabgrenzung" in der Softwarearchitektur?
+  answer: Das System als Blackbox darzustellen und seine Beziehungen zur Umwelt aufzuzeigen.
+  wrong_answers:
+  - Die inneren Klassenstrukturen des Systems detailliert zu planen.
+  - Die Hardwarekosten für das Projekt zu kalkulieren.
+  - Den Quellcode der wichtigsten Funktionen zu dokumentieren.
+  explanation: Die Kontextabgrenzung zeigt das Umfeld eines Systems sowie dessen Zusammenhang
+    mit seiner Umwelt auf einer hohen Abstraktionsebene.
+- question: Welches Problem beschreibt das Anti-Pattern "Big Ball of Mud" im Hinblick
+    auf die Evolvierbarkeit?
+  answer: Ein System ohne klare Grenzen mit über das gesamte System verteilten Verbindungen.
+  wrong_answers:
+  - Ein System, das zu viele Microservices verwendet.
+  - Eine Architektur, die zu strikt in Schichten unterteilt ist.
+  - Ein Projekt, das keine Cloud-Infrastruktur nutzt.
+  explanation: Ein "Big Ball of Mud" hat keine klare Struktur, was Änderungen schwierig
+    macht und zu vielen Nebeneffekten führt.
+- question: Was ist ein wesentliches Merkmal der "Bausteinsicht"?
+  answer: Sie bildet die Aufgaben des Systems auf Softwarekomponenten ab und zeigt
+    deren Struktur.
+  wrong_answers:
+  - Sie beschreibt ausschließlich die physikalische Serververkabelung.
+  - Sie fokussiert sich nur auf die ästhetische Gestaltung der Benutzeroberfläche.
+  - Sie definiert die Marketing-Strategie für das Softwareprodukt.
+  explanation: Die Bausteinsicht nutzt Komponenten-, Klassen- und Paketdiagramme,
+    um die interne Strukturierung des Systems darzustellen.
+- question: Welche drei Faktoren sind laut den Folien entscheidend für Architektur-Entscheidungen
+    bei der Software-Evolution?
+  answer: Agilität, Geschwindigkeit, Modularität
+  wrong_answers:
+  - Kosten, Personalstärke, Büromiete
+  - Programmiersprache, Datenbanktyp, Cloud-Anbieter
+  - Dokumentation, Testabdeckung, Benutzeranzahl
+  explanation: Die Folien nennen Agilität (Reaktion auf Änderungen), Geschwindigkeit
+    (Richtung der Entwicklung) und Modularität (unabhängige Elemente) als zentrale
+    Faktoren.
+- question: Wie interagieren Microservices typischerweise miteinander?
+  answer: Über leichtgewichtige Protokolle wie HTTP/REST.
+  wrong_answers:
+  - Über direkten gemeinsamen Zugriff auf denselben Speicherbereich (Shared Memory).
+  - Ausschließlich über manuelle Dateiübertragungen durch Administratoren.
+  - Über eine zentrale, monolithische Datenbank ohne Schnittstellen.
+  explanation: Microservices sind entkoppelt und kommunizieren über Netzwerkprotokolle
+    wie HTTP oder Message Queues.
+- question: Was versteht man unter "Geleiteter Veränderbarkeit" (Guided Evolvability)
+    bei Architekturen?
+  answer: Der Einsatz von Fitness-Funktionen, um Charakteristiken der Architektur
+    zu bewerten und zu erhalten.
+  wrong_answers:
+  - Die strikte Anweisung des Managements, keine Änderungen am Code vorzunehmen.
+  - Das automatische Schreiben von Benutzerhandbüchern durch KI.
+  - Die Verwendung von GPS-Daten zur Steuerung von Software-Updates.
+  explanation: Geleitete Veränderbarkeit nutzt Fitness-Funktionen, um sicherzustellen,
+    dass wichtige Architekturmerkmale bei Änderungen nicht verloren gehen.
+- question: Was ist die Hauptaufgabe des "Dispatcher Servlets" im Spring MVC Framework?
+  answer: Es fungiert als Front Controller und leitet Anfragen an die entsprechenden
+    Controller weiter.
+  wrong_answers:
+  - Es löscht automatisch alte Daten aus der Datenbank.
+  - Es ist für die physikalische Verschlüsselung der Festplatte zuständig.
+  - Es dient als primäre Benutzeroberfläche für den Endanwender.
+  explanation: Im Spring MVC Pattern empfängt das Dispatcher Servlet (Front Controller)
+    die Requests und koordiniert die weitere Verarbeitung durch Handler Mappings und
+    Controller.
+- question: Welcher Architekturstil ist durch eine "Folge von Operationen auf Daten"
+    gekennzeichnet?
+  answer: Datenflusssysteme
+  wrong_answers:
+  - Interaktionsorientierte Systeme
+  - Hierarchische Systeme
+  - Verteilte Systeme
+  explanation: Datenflusssysteme (wie Pipes und Filter) bestehen aus einer Kette von
+    Operationen, die nacheinander auf einen Datenstrom angewendet werden.
+- question: Was bedeutet der Slogan „You build it, you run it“ im Kontext von Microservices?
+  answer: Dass dasselbe Team sowohl für die Entwicklung als auch für den Betrieb eines
+    Services verantwortlich ist (DevOps).
+  wrong_answers:
+  - Dass der Kunde die Software selbst programmieren muss.
+  - Dass Hardware und Software vom selben Hersteller stammen müssen.
+  - Dass Programme nur auf dem Rechner laufen, auf dem sie kompiliert wurden.
+  explanation: Dieser DevOps-Ansatz fördert die Eigenverantwortung und Qualität, da
+    das Team die Konsequenzen von Fehlentscheidungen im Betrieb selbst trägt.
+- question: In welcher Schicht der Backend-Schichtenarchitektur wird die fachliche
+    Logik (auch entitätsübergreifend) implementiert?
+  answer: Businesslogikschicht (Business Layer)
+  wrong_answers:
+  - Zugriffsschicht (Access Layer)
+  - Datenzugriffsschicht (Data Access Layer)
+  - Präsentationsschicht (Presentation Layer)
+  explanation: Die Businesslogikschicht enthält die eigentliche "Intelligenz" und
+    die fachlichen Regeln der Anwendung.
+- question: Welche drei Prinzipien guter Architektur wurden ursprünglich von Vitruv
+    definiert?
+  answer: Nützlichkeit, Festigkeit, Schönheit
+  wrong_answers:
+  - Skalierbarkeit, Wartbarkeit, Sicherheit
+  - Modularität, Agilität, Geschwindigkeit
+  - Effizienz, Korrektheit, Portabilität
+  explanation: Vitruv beschrieb Architektur mit den Prinzipien Utilitas (Nützlichkeit),
+    Firmitas (Festigkeit) und Venustas (Schönheit). Diese wurden auf die Softwarearchitektur
+    übertragen, wobei Nützlichkeit die Erfüllung von Anforderungen, Festigkeit die
+    Stabilität und Wartbarkeit sowie Schönheit eine klare und verständliche Struktur
+    beschreibt.
+- question: Was ist ein Hauptunterschied zwischen Softwarearchitektur und Softwareentwurf
+    laut den Vorlesungsfolien?
+  answer: Architektur leitet sich vor allem aus nicht-funktionalen Anforderungen ab,
+    während der Entwurf der Fachlichkeit folgt.
+  wrong_answers:
+  - Architektur betrachtet jede einzelne Komponente, Entwurf nur das Gesamtsystem.
+  - Der Entwurf legt die Programmiersprache fest, die Architektur nur die Algorithmen.
+  - Es gibt keinen Unterschied; beide Begriffe beschreiben den gleichen Prozess.
+  explanation: Softwarearchitektur beschäftigt sich mit der Struktur des Gesamtsystems
+    und wird maßgeblich durch nicht-funktionale Anforderungen wie Wartbarkeit, Performance
+    oder Sicherheit bestimmt. Der Softwareentwurf hingegen konkretisiert die fachlichen
+    Anforderungen innerhalb der vorgegebenen Architektur.
+- question: Welches Ziel verfolgt Softwarearchitektur primär?
+  answer: Die priorisierten nicht-funktionalen Anforderungen optimal zu erfüllen.
+  wrong_answers:
+  - Möglichst viel Code wiederzuverwenden.
+  - Alle fachlichen Anforderungen vollständig zu modellieren.
+  - Die Implementierung einzelner Klassen festzulegen.
+  explanation: Architekturentscheidungen werden getroffen, um Qualitätsmerkmale wie
+    Stabilität, Erweiterbarkeit oder Skalierbarkeit gezielt zu unterstützen. Funktionale
+    Anforderungen sind wichtig, werden jedoch hauptsächlich im Entwurf adressiert.
+- question: Welche Bestandteile gehören zu einer Softwarearchitektur?
+  answer: Bausteine, Schnittstellen und Strukturen.
+  wrong_answers:
+  - Klassen, Methoden und Variablen.
+  - Quellcode, Compiler und Laufzeitumgebung.
+  - Use Cases, User Stories und Tests.
+  explanation: Eine Softwarearchitektur beschreibt aus einer abstrakten Sicht die
+    Bausteine eines Systems, deren Schnittstellen sowie die statischen und dynamischen
+    Strukturen. Details wie Klassen oder Methoden gehören bereits zum Entwurf bzw.
+    zur Implementierung.
+- question: Was beschreibt die Laufzeitsicht einer Softwarearchitektur?
+  answer: Wie Bausteine zur Laufzeit zusammenwirken und Use Cases abgearbeitet werden.
+  wrong_answers:
+  - Die physische Verteilung auf Hardware.
+  - Die fachliche Funktionalität für den Benutzer.
+  - Die statische Struktur des Quellcodes.
+  explanation: Die Laufzeitsicht zeigt dynamische Aspekte wie Interaktionen, Nachrichtenflüsse
+    und Abläufe zwischen Komponenten während der Ausführung des Systems, häufig mithilfe
+    von Sequenz- oder Aktivitätsdiagrammen.
+- question: Welche Sicht gehört NICHT zum 4+1-Modell nach Kruchten?
+  answer: Sicherheitssicht
+  wrong_answers:
+  - Logical View
+  - Process View
+  - Physical View
+  explanation: Das 4+1-Modell besteht aus Logical View, Process View, Development
+    View, Physical View sowie Szenarien (+1). Eine explizite Sicherheitssicht ist
+    darin nicht enthalten, kann aber ergänzend modelliert werden.
+- question: Welcher Architekturstil ist typisch für klar getrennte Ebenen mit definierten
+    Abhängigkeiten?
+  answer: Schichtenarchitektur
+  wrong_answers:
+  - Publish-Subscribe
+  - Pipes and Filter
+  - Repository
+  explanation: Die Schichtenarchitektur organisiert ein System in hierarchische Ebenen,
+    wobei jede Schicht klar definierte Aufgaben besitzt und nur mit benachbarten Schichten
+    kommuniziert. Dies erhöht Wartbarkeit und Verständlichkeit.
+- question: Was ist ein zentrales Problem der sogenannten \"Big Ball of Mud\"?
+  answer: Änderungen führen zu vielen unvorhersehbaren Nebeneffekten.
+  wrong_answers:
+  - Hoher initialer Entwurfsaufwand.
+  - Zu starke Modularisierung.
+  - Zu geringe Performance durch Verteilung.
+  explanation: Beim Big Ball of Mud fehlen klare Strukturen und Verantwortlichkeiten.
+    Abhängigkeiten sind unkontrolliert verteilt, sodass selbst kleine Änderungen große
+    Auswirkungen auf das gesamte System haben können.
+- question: Was zeichnet eine Microservice-Architektur aus?
+  answer: Kleine, unabhängig deploybare Services mit eigener Laufzeitumgebung.
+  wrong_answers:
+  - Zentrale Datenbank für alle Services.
+  - Gemeinsames Deployment aller Komponenten.
+  - Starke Kopplung zwischen Services.
+  explanation: Microservices sind fachlich geschnittene, eigenständige Services, die
+    unabhängig entwickelt, deployed und skaliert werden können. Jeder Service besitzt
+    in der Regel seine eigene Datenhaltung und Laufzeitumgebung.
+- question: Welches Gesetz besagt, dass Systemarchitekturen die Kommunikationsstrukturen
+    von Organisationen widerspiegeln?
+  answer: Conways Law
+  wrong_answers:
+  - Brooks Law
+  - Murphy's Law
+  - CAP-Theorem
+  explanation: Conway’s Law beschreibt, dass die Struktur eines Softwaresystems die
+    Kommunikations- und Organisationsstruktur des entwickelnden Unternehmens widerspiegelt.
+    Dies ist besonders relevant bei Microservices und Teamzuschnitten.
+- question: Warum sind Architekturentscheidungen besonders schwer rückgängig zu machen?
+  answer: Weil sie grundlegende Strukturen und Abhängigkeiten festlegen, die sich
+    durch das gesamte System ziehen.
+  wrong_answers:
+  - Weil sie ausschließlich in der Implementierungsphase getroffen werden.
+  - Weil sie nur die Wahl der Programmiersprache betreffen.
+  - Weil sie keine Auswirkungen auf Wartbarkeit oder Erweiterbarkeit haben.
+  explanation: Architekturentscheidungen beeinflussen Bausteinstrukturen, Schnittstellen
+    und Abhängigkeiten im gesamten System. Änderungen daran wirken sich auf viele
+    Komponenten gleichzeitig aus und sind daher teuer und risikoreich.
+- question: Warum werden nicht-funktionale Anforderungen häufig als architekturtreibend
+    bezeichnet?
+  answer: Weil sie die grundlegende Struktur und Organisation eines Systems maßgeblich
+    beeinflussen.
+  wrong_answers:
+  - Weil sie nur im Softwareentwurf berücksichtigt werden.
+  - Weil sie ausschließlich durch Tests überprüft werden können.
+  - Weil sie keinen Einfluss auf technische Entscheidungen haben.
+  explanation: Anforderungen wie Performance, Skalierbarkeit oder Sicherheit bestimmen
+    zentrale Architekturentscheidungen, etwa die Wahl von Architekturstilen, Verteilung
+    oder Kommunikationsmechanismen.
+- question: In welchem Fall ist eine Schichtenarchitektur eher ungeeignet?
+  answer: Wenn sehr niedrige Latenzzeiten und direkte Kommunikation zwischen Komponenten
+    erforderlich sind.
+  wrong_answers:
+  - Wenn Wartbarkeit ein zentrales Ziel ist.
+  - Wenn klare Verantwortlichkeiten benötigt werden.
+  - Wenn Teams parallel arbeiten sollen.
+  explanation: Die Schichtenarchitektur führt oft zu zusätzlichem Overhead durch Schichtdurchläufe.
+    Bei strengen Performance-Anforderungen kann dies problematisch sein.
+- question: Welche Eigenschaft macht Microservices besonders geeignet für evolutionäre
+    Softwarearchitekturen?
+  answer: Kleine, klar abgegrenzte Änderungsquanten mit unabhängiger Deploymentfähigkeit.
+  wrong_answers:
+  - Einheitliche zentrale Datenhaltung.
+  - Starke Kopplung zwischen fachlichen Modulen.
+  - Gemeinsame Laufzeitumgebung für alle Services.
+  explanation: Durch die geringe Größe und klare fachliche Abgrenzung können Microservices
+    unabhängig verändert, getestet und ausgerollt werden, was evolutionäre Weiterentwicklung
+    unterstützt.
+- question: Warum ist der Big Ball of Mud ein Beispiel für schlechte evolvierbare
+    Architektur?
+  answer: Weil fehlende Struktur inkrementelle und gezielte Änderungen nahezu unmöglich
+    macht.
+  wrong_answers:
+  - Weil er zu strikt modularisiert ist.
+  - Weil er zu viele explizite Architekturregeln enthält.
+  - Weil er ausschließlich in verteilten Systemen vorkommt.
+  explanation: Ohne klare Bausteine und Schnittstellen sind Änderungen schwer steuerbar,
+    Fitness-Funktionen kaum definierbar und Abhängigkeiten unkontrolliert.

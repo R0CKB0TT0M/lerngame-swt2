@@ -1,0 +1,80 @@
+questions:
+  - question: "Ein Team entscheidet sich bei der Entwicklung eines neuen Microservices, konsequent auf das 'Dependency Inversion Principle' (DIP) zu setzen. Welches primäre 	Ziel in Bezug auf die Softwarearchitektur wird damit verfolgt?"
+    answer: "Die Entkopplung von fachlicher Logik (High-Level) von technischen Implementierungsdetails (Low-Level), um die Testbarkeit und Austauschbarkeit zu erhöhen."
+    wrong_answers:
+      - "Die Sicherstellung, dass eine Klasse nur eine einzige, klar definierte Verantwortlichkeit besitzt (Single Responsibility)."
+      - "Die Optimierung der Performance durch direkte Instanziierung von benötigten Objekten zur Laufzeit ohne Overhead."
+      - "Die Kapselung von Objekterzeugungsprozessen in einer zentralen statischen Fabrikmethode zur Vermeidung von Redundanz."
+    explanation: "Das DIP besagt, dass Module höherer Ebenen nicht von Modulen niedrigerer Ebenen abhängen sollten. Dies verhindert, dass Änderungen an technischen Details (z.B. Datenbank-Treiber) die Geschäftslogik korrumpieren."
+
+  - question: "In einer REST-Architektur soll eine Liste von Bestellungen abgerufen werden. Ein Client benötigt jedoch nur die 'ID' und den 'Status' jeder Bestellung. Wie würde dieses Problem im Vergleich zwischen REST und GraphQL typischerweise gelöst?"
+    answer: "In REST müsste der Server explizite Query-Parameter unterstützen oder einen speziellen Endpunkt bereitstellen; in GraphQL selektiert der Client die Felder direkt im Query."
+    wrong_answers:
+      - "REST löst dies nativ über HATEOAS-Links, während GraphQL für jedes Feld einen eigenen API-Call benötigt."
+      - "In REST wird dies über das HTTP-Verb 'PATCH' gelöst, während GraphQL grundsätzlich immer das gesamte Schema zurückgibt."
+      - "GraphQL nutzt Caching auf HTTP-Ebene, um nur Differenzen zu übertragen, während REST immer das vollständige Ressourcenmodell sendet."
+    explanation: "GraphQL erlaubt dem Client, die 'Form' der Antwort zu bestimmen (kein Overfetching). REST-Ressourcen sind serverseitig fix definiert und benötigen für Teilmengen Zusatzimplementierungen wie Sparse Fieldsets."
+
+  - question: "Sie entwerfen ein System, das verschiedene regionale Varianten eines Produkts (z. B. 'NYStyle' vs. 'ChicagoStyle') erzeugen muss. Die Produkte innerhalb einer Region müssen zwingend zueinander passen. Welches Muster ist am besten geeignet?"
+    answer: "Abstrakte Fabrik (Abstract Factory)"
+    wrong_answers:
+      - "Singleton"
+      - "Strategie-Muster (Strategy)"
+      - "Fabrikmethode (Factory Method)"
+    explanation: "Die 'Abstrakte Fabrik' bietet eine Schnittstelle zum Erzeugen ganzer Produktfamilien. Sie stellt sicher, dass nur zueinander passende Produkte verwendet werden (Konsistenz), was über eine einfache Fabrikmethode hinausgeht."
+
+  - question: "Welches Entwurfsprinzip wird verletzt, wenn eine Änderung an der Datenbank-Schnittstelle dazu führt, dass auch die Benutzeroberfläche und die PDF-Export-Logik angepasst werden müssen?"
+    answer: "Lose Kopplung (Low Coupling)"
+    wrong_answers:
+      - "Geheimnisprinzip (Information Hiding)"
+      - "Liskovsches Substitutionsprinzip"
+      - "Konvention vor Konfiguration"
+    explanation: "Wenn Änderungen an einer Komponente viele andere Stellen beeinflussen, liegt eine zu starke Kopplung vor. Architektur zielt darauf ab, Abhängigkeiten so zu minimieren, dass Änderungen lokal begrenzt bleiben."
+
+  - question: "Ein E-Commerce-System leidet unter hoher Latenz, da für die Anzeige einer Bestellübersicht pro Zeile ein separater REST-Aufruf für Produktdetails abgesetzt wird (N+1 Problem). Welche Architektur-Entscheidung löst dieses Problem am nachhaltigsten?"
+    answer: "Einführung von GraphQL, da hier über ein einziges Query verschachtelte Ressourcen in einer Antwort geladen werden können."
+    wrong_answers:
+      - "Einführung eines Client-seitigen Caches, der die doppelten Anfragen lokal abfängt."
+      - "Umstellung der Kommunikation von HTTP/1.1 auf HTTP/2, um Multiplexing zu nutzen."
+      - "Einsatz des Singleton-Musters im Backend, um die Datenbankverbindungen zu bündeln."
+    explanation: "Das N+1 Problem entsteht durch die Ressourcen-Orientierung von REST. GraphQL wurde entworfen, um mittels verschachtelter Selektionen solche Graphen effizient mit einem einzigen Roundtrip abzufragen."
+
+  - question: "In einer Microservice-Architektur soll sichergestellt werden, dass Service A bei einem Ausfall von Service B nicht ebenfalls blockiert wird. Welches Architekturmuster adressiert diese Resilience-Anforderung?"
+    answer: "Circuit Breaker"
+    wrong_answers:
+      - "Adapter-Muster"
+      - "Strategy-Muster"
+      - "Proxy-Muster"
+    explanation: "Der Circuit Breaker überwacht Aufrufe an einen Dienst. Bei zu vielen Fehlern 'springt die Sicherung raus' und verhindert weitere Blockaden im aufrufenden System, indem sofort ein Fehler oder Fallback geliefert wird."
+
+  - question: "Sie planen eine REST-API, bei der Clients neue Ressourcen entdecken sollen, ohne Endpunkte hart einzuprogrammieren. Welches Reifegrad-Level des Richardson Maturity Models muss erfüllt sein?"
+    answer: "Level 3 (HATEOAS)"
+    wrong_answers:
+      - "Level 1 (Ressourcen)"
+      - "Level 2 (HTTP Verben)"
+      - "Level 0 (The Swamp of POX)"
+    explanation: "Level 3 führt Hypermedia Controls ein. Der Server sendet Links zu weiteren Aktionen mit, sodass der Client durch die API navigieren kann, ohne die URL-Struktur vorab kennen zu müssen."
+
+  - question: "Bei der Implementierung eines Notification-Services sollen Nutzer per E-Mail, SMS oder Push informiert werden. Die Wahl des Kanals soll zur Laufzeit flexibel austauschbar sein. Welches Muster ist am treffendsten?"
+    answer: "Strategie-Muster (Strategy)"
+    wrong_answers:
+      - "Beobachter-Muster (Observer)"
+      - "Dekorierer-Muster (Decorator)"
+      - "Zustands-Muster (State)"
+    explanation: "Das Strategy-Muster kapselt verschiedene Algorithmen (Versandwege) in eigene Klassen und macht sie für den Kontext über ein Interface austauschbar."
+
+  - question: "Welche Maßnahme ist die primäre Verteidigung gegen bösartige, extrem tief geschachtelte Abfragen in GraphQL?"
+    answer: "Query Depth Limiting und Cost Analysis"
+    wrong_answers:
+      - "Einführung von REST-Endpunkten für komplexe Abfragen."
+      - "Verwendung von HTTP-Caching (ETags)."
+      - "Deaktivierung der Introspection-Query."
+    explanation: "Depth Limiting begrenzt die Verschachtelungstiefe, Cost Analysis weist Feldern Werte zu. Beides verhindert Denial-of-Service-Angriffe durch zu komplexe Abfragen."
+
+  - question: "Ein System exportiert Berichte in PDF, HTML und JSON. Der Prozess (Daten sammeln, Validieren, Senden) ist immer gleich, nur die Formatierung variiert. Welches Muster bietet sich an?"
+    answer: "Template Method (Schablonenmethode)"
+    wrong_answers:
+      - "Abstract Factory"
+      - "Composite (Kompositum)"
+      - "Facade (Fassade)"
+    explanation: "Die Schablonenmethode definiert das Skelett des Algorithmus in der Basisklasse und lässt Unterklassen nur spezifische Schritte (wie das Formatieren) überschreiben."
