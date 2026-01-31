@@ -43,10 +43,10 @@ def ask_question(question, number):
     correct_choice = options.index(question["answer"]) + 1
 
     if user_choice == correct_choice:
-        print("Correct!")
+        print("\033[92mCorrect!\033[0m")
         is_correct = True
     else:
-        print(f"Incorrect. The correct answer is {question['answer']}.")
+        print(f"\033[91mIncorrect. The correct answer is {question['answer']}.\033[0m")
         is_correct = False
 
     explanation = question.get("explanation")
@@ -57,6 +57,16 @@ def ask_question(question, number):
     return is_correct
 
 
+def ask_question_count(max_questions):
+    while True:
+        raw = input(f"How many questions would you like? (1-{max_questions}): ").strip()
+        if raw.isdigit():
+            requested = int(raw)
+            if 1 <= requested <= max_questions:
+                return requested
+        print("Please enter a valid number within range.")
+
+
 def run_quiz():
     questions = load_questions()
     if not questions:
@@ -65,10 +75,13 @@ def run_quiz():
 
     random.shuffle(questions)
 
-    score = 0
-    total_questions = len(questions)
+    total_available = len(questions)
+    total_questions = ask_question_count(total_available)
+    selected_questions = questions[:total_questions]
 
-    for idx, question in enumerate(questions, start=1):
+    score = 0
+
+    for idx, question in enumerate(selected_questions, start=1):
         if ask_question(question, idx):
             score += 1
 
